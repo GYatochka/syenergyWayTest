@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 class Group extends React.Component{
     render(){
+        const groups = this.props.data;
         const red = ` .red {
             color:red;
         };
@@ -23,12 +24,14 @@ class Group extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
+                    {groups.map(group => 
                         <tr>
                             <td>0</td>
                             <td>Admin</td>
                             <td>Godness</td>
                             <td><a href = "/">Edit</a> | <a href = "/" class = 'red'>Delete</a></td>
                         </tr>
+                    )}
                     </tbody>
                 </Table>
             
