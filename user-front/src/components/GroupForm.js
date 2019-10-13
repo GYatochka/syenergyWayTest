@@ -30,18 +30,20 @@ class GroupForm extends React.Component{
         console.log(postObj);
 
         if(requestType === 'post'){
-             axios.post(`http://127.0.0.1:8000/groups/`,  postObj )
+             axios.post(`http://127.0.0.1:8000/groups/`, postObj )
                                 .then(res=> console.log(res))
                                 .catch(err=>console.error(err))
 
          }
          else if (requestType === 'put')
          {
-              axios.put(`http://127.0.0.1:8000/groups/${groupID}/`,  postObj)
+              axios.put(`http://127.0.0.1:8000/groups/${groupID}/`, postObj)
                                 .then(res=> console.log(res))
                                 .catch(err=>console.error(err))
 
          }
+         this.props.history.push('/');
+         this.forceUpdate();
     }
     render(){
         
@@ -55,10 +57,12 @@ class GroupForm extends React.Component{
                             <Form.Group>
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control type="name" name="name" placeholder= {this.state.groupForEditing.name} />
+                                
                             </Form.Group>
                             <Form.Group controlId="exampleForm.ControlSelect1">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control as="textarea" rows="3" name='description' placeholder= {this.state.groupForEditing.description}/>
+                                
                             </Form.Group>
                             <Button variant="primary" type="submit">
                                     Submit

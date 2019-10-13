@@ -30,7 +30,7 @@ class GroupList extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.groups.map(group => <Group data ={group}/>)}
+                        {this.state.groups.map(group =><Group data ={group}/>)}
                     </tbody>
                 </Table>
             

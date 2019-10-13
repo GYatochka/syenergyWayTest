@@ -22,29 +22,28 @@ class UserForm extends React.Component{
     }
     handleFormSubmit = (event,  requestType, userID) =>{
         event.preventDefault();
-        const group = this.state.groups.find(el => el.id == event.target.elements.group.value );
-        const date = Date.now();
-        console.log(group);
+
         const postObj = {
            username: event.target.elements.username.value,
-            groups: [group,],
-            date_joined: date,
+           groups: [event.target.elements.group.value],
         };
         console.log(postObj);
 
         
         if(requestType === 'post'){
-            axios.post(`http://127.0.0.1:8000/users/`,  postObj )
+            axios.post('http://127.0.0.1:8000/users/', postObj )
             .then(res=> console.log(res))
             .catch(err=>console.error(err))
                        
         }
         else if (requestType === 'put'){
-            axios.put(`http://127.0.0.1:8000/users/${userID}/`,  postObj)
+            axios.put(`http://127.0.0.1:8000/users/${userID}/`, postObj)
             .then(res=> console.log(res))
             .catch(err=>console.error(err))
                        
         }
+        this.props.history.push('/');
+        
     }
 
     render(){

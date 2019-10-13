@@ -28,7 +28,7 @@ class Group extends React.Component{
                             <td>{group.id}</td>
                             <td>{group.name}</td>
                             <td>{group.description}</td>
-                            <td> <Button variant="outline-primary" ><Link to={`/create-group/put/${group.id}`} >Edit</Link></Button> <Button  variant="outline-danger" onClick = {e => this.onDelete(e, group.id)} class = 'red'>Delete</Button></td>
+                            <td><Button variant="outline-primary" ><Link to={`/create-group/put/${group.id}`} >Edit</Link></Button> <Button  variant="outline-danger" onClick = {e => this.onDelete(e, group.id)} class = 'red'>Delete</Button></td>
                         </tr>
                     
         );

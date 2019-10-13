@@ -13,11 +13,6 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    groups = GroupSerializer(many=True)
-
-    def create(self, validated_data):
-        return User.objects.create(**validated_data)
-
     class Meta:
         model = UserModel
         fields = ('id', 'username', 'date_joined', 'groups',)
