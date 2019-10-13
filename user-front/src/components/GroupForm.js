@@ -49,10 +49,10 @@ class GroupForm extends React.Component{
         
         return(
             <Container>
-                <Button variant="outline-primary"><Link to='/'> Home</Link></Button>
+                <Button className="float-md-left" variant="outline-primary"><Link to='/'> Home</Link></Button>
                 <Row className="justify-content-md-center">
                     <Col xs lg = "6">
-                        <h1>Group creation</h1>
+                        <h1>Group creation form</h1>
                         <Form onSubmit = {e=> this.handleFormSubmit(e, this.props.match.params.requestType, this.props.match.params.groupID)}>
                             <Form.Group>
                                 <Form.Label>Name</Form.Label>

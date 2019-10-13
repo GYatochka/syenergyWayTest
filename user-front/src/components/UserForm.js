@@ -43,6 +43,7 @@ class UserForm extends React.Component{
                        
         }
         this.props.history.push('/');
+        this.forceUpdate();
         
     }
 
@@ -50,9 +51,10 @@ class UserForm extends React.Component{
         
         return(
             <Container>
-                <Button variant="outline-primary"><Link to='/'> Home</Link></Button>
+                <Button className="float-md-left" variant="outline-primary"><Link to='/'> Home</Link></Button>
                 <Row className="justify-content-md-center">
                     <Col xs lg = "6">
+                        <h1>User creation form</h1>
                         <Form onSubmit = {e=> this.handleFormSubmit(e, this.props.match.params.requestType, this.props.match.params.userID)}>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>

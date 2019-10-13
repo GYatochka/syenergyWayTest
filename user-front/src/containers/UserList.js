@@ -9,15 +9,24 @@ class UserList extends React.Component{
 
     state = {
         users: [],
+        groups: [],
     }
 
     componentDidMount(){
+        axios.get('http://127.0.0.1:8000/groups/')
+        .then(res =>{
+            
+            this.setState({
+                groups : res.data,
+            })
+        })
         axios.get('http://127.0.0.1:8000/users/')
         .then(res =>{
             this.setState({
                 users : res.data,
             })
-        })
+        });
+        ;
     }
 
     render(){
@@ -35,7 +44,7 @@ class UserList extends React.Component{
                     </thead>
                     <tbody> 
                     {this.state.users.map(user => 
-                        <User data = {user} />
+                        <User data = {user} groups = {this.state.groups} />
                     )}
                     </tbody>
                 </Table>
