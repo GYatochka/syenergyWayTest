@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 class UserForm extends React.Component{
     state = {
@@ -19,21 +20,49 @@ class UserForm extends React.Component{
             })
         })
     }
+    handleFormSubmit = (event,  requestType, userID) =>{
+        event.preventDefault();
+        const group = this.state.groups.find(el => el.id == event.target.elements.group.value );
+        const date = Date.now();
+        console.log(group);
+        const postObj = {
+           username: event.target.elements.username.value,
+            groups: [group,],
+            date_joined: date,
+        };
+        console.log(postObj);
+
+        
+        if(requestType === 'post'){
+            axios.post(`http://127.0.0.1:8000/users/`,  postObj )
+            .then(res=> console.log(res))
+            .catch(err=>console.error(err))
+                       
+        }
+        else if (requestType === 'put'){
+            axios.put(`http://127.0.0.1:8000/users/${userID}/`,  postObj)
+            .then(res=> console.log(res))
+            .catch(err=>console.error(err))
+                       
+        }
+    }
+
     render(){
         
         return(
             <Container>
+                <Button variant="outline-primary"><Link to='/'> Home</Link></Button>
                 <Row className="justify-content-md-center">
                     <Col xs lg = "6">
-                        <Form>
+                        <Form onSubmit = {e=> this.handleFormSubmit(e, this.props.match.params.requestType, this.props.match.params.userID)}>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control type="username" placeholder="example" />
+                                <Form.Control name= "username" type="username" placeholder="example" />
                             </Form.Group>
                             <Form.Group controlId="exampleForm.ControlSelect1">
                                 <Form.Label>Groups</Form.Label>
-                                <Form.Control as="select">
-                                    {this.state.groups.map(group => <option>{group.name}</option>) }
+                                <Form.Control as="select" name="group">
+                                    {this.state.groups.map(group => <option  value={group.id}>{group.name}</option>) }
                                 </Form.Control>
                             </Form.Group>
                             <Button variant="primary" type="submit">

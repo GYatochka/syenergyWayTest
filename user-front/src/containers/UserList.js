@@ -40,7 +40,7 @@ class UserList extends React.Component{
                     </tbody>
                 </Table>
            
-                <Button variant="outline-primary"><Link to='/create-user'> Add User</Link></Button>
+                <Button variant="outline-primary"><Link to='/create-user/post/'> Add User</Link></Button>
             </div>
         );
     };

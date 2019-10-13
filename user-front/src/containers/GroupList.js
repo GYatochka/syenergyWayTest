@@ -34,7 +34,7 @@ class GroupList extends React.Component{
                     </tbody>
                 </Table>
             
-                <Button variant="outline-primary"><Link to='/create-group'> Add Group</Link></Button>
+                <Button variant="outline-primary"><Link to='/create-group/post/' requestType="post"> Add Group</Link></Button>
             </div>
 
         );

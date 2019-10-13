@@ -7,8 +7,8 @@ import GroupForm from './components/GroupForm'
 const BaseRouter = () =>(
     <Switch>
         <Route exact path='/' component={UserTabs} />
-        <Route exact path='/create-user' component={UserForm}/>
-        <Route exact path='/create-group' component={GroupForm}/>    
+        <Route exact path='/create-user/:requestType/:userID?' component={UserForm}/>
+        <Route exact path='/create-group/:requestType/:groupID?' component={GroupForm}/>    
     </Switch>
 );
 export default BaseRouter;
