@@ -7,8 +7,8 @@ class User extends React.Component{
     
     onDelete = (e,userId)=>{
         axios.delete(`http://127.0.0.1:8000/users/${userId}`)
-        .then(console.log("Successfully deleted!"))
-        .then(this.forceUpdate());
+        .then(console.log("Successfully deleted!"));
+        setTimeout(this.props.history.push('/'),2000);
         
         
     }

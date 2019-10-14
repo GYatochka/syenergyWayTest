@@ -7,8 +7,8 @@ class Group extends React.Component{
 
     onDelete = (e,groupId)=>{
         axios.delete(`http://127.0.0.1:8000/groups/${groupId}`)
-        .then(console.log("Successfully deleted!"))
-        .then(this.forceUpdate());
+        .then(console.log("Successfully deleted!"));
+        setTimeout(this.props.history.push('/'),2000);
     }
     
     render(){

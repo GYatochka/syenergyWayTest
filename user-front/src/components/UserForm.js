@@ -42,8 +42,9 @@ class UserForm extends React.Component{
             .catch(err=>console.error(err))
                        
         }
-        this.props.history.push('/');
-        this.forceUpdate();
+        
+        
+        setTimeout(this.props.history.push('/'),2000);
         
     }
 
