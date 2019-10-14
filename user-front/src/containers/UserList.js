@@ -12,8 +12,8 @@ class UserList extends React.Component{
         groups: [],
     }
 
-    componentDidMount(){
-        axios.get('http://127.0.0.1:8000/groups/')
+    async componentDidMount(){
+        await axios.get('http://127.0.0.1:8000/groups/')
         .then(res =>{
             
             this.setState({
